@@ -1,29 +1,32 @@
-class Solution():
-    def evalRPN(self, tokens: list[str]) -> int:
+class Solution(object):
+    def evalRPN(self, tokens):
         num_stack = []
         result = 0
         for item in tokens:
-            if item.isdigit():
-                num_stack.append(item)
+            if item not in "+-/*":
+                num_stack.append(int(item))
             else:
+                a = num_stack.pop()
+                b = num_stack.pop()
                 if item == "+":
-                    result: int = int(num_stack[0]) + int(num_stack[1])
-                    num_stack.clear()
+                    result = a + b
                     num_stack.append(result)
                 if item == "*":
-                    result: int = int(num_stack[0]) * int(num_stack[1])
-                    num_stack.clear()
+                    result = a * b
                     num_stack.append(result)
                 if item == "-":
-                    result: int = int(num_stack[0]) - int(num_stack[1])
-                    num_stack.clear()
+                    result = b - a
                     num_stack.append(result)
-        return result
+                if item == "/":
+                    result = b / a
+                    num_stack.append(int(result))
+        return num_stack[0]
+        
             
     
 def main():
     solution = Solution()
-    print(solution.evalRPN(["1", "2", "+", "3", "*", "4", "-"]))
+    print(solution.evalRPN(["10", "6", "9", "3", "+", "-11", "*", "/","*","17","+","5","+"]))
     
 if __name__ == "__main__":
     main()
