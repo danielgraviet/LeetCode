@@ -22,6 +22,12 @@ class Solution(object):
         else:
             print(f"you took step {num}")
             self.steps(num -1)
+            
+    def sum_digits(self, num):
+        if num < 10:
+            return num
+        else:
+            return num % 10 + self.sum_digits(num // 10)
         
 
 def main():
@@ -29,6 +35,8 @@ def main():
     solution.countdown(5)
     solution.squares(5)
     solution.steps(5)
-
+    print(solution.sum_digits(5234))
+    
+    
 if __name__ == "__main__":
     main()
