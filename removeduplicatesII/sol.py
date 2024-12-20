@@ -1,9 +1,5 @@
 class Solution(object):
     def removeDuplicates(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
         j, count = 1, 1
         n = len(nums)
 
@@ -12,18 +8,16 @@ class Solution(object):
                 count += 1
             else:
                 count = 1
-            
-            if count <= 2:
-                nums[j] = nums[i]
-                j += 1
 
+            if count <= 2:
+                nums[j] == nums[i]
+                j += 1
+        
         return j
 
 def main():
     sol = Solution()
     print(sol.removeDuplicates([1,2,2,2,3]))
-
+    
 if __name__ == "__main__":
     main()
-        
-        
