@@ -18,6 +18,16 @@ class Solution(object):
                 nums[j] = nums[i]
                 j += 1
         return j
+    
+    def dictionarySolution(self, nums):
+        unique_dict = {}
+        write_index = 0
+        for num in nums:
+            if num not in unique_dict:
+                unique_dict[num] = True
+                nums[write_index] = num
+                write_index += 1
+        return write_index
         
 if __name__ == "__main__":
     nums = [1, 1, 2]
@@ -26,3 +36,4 @@ if __name__ == "__main__":
     print(solution.removeDuplicates(nums))
     print(solution.solution2(nums2))
     print(nums2)
+    print(solution.dictionarySolution(nums2))
