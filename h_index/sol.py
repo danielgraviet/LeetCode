@@ -35,9 +35,12 @@ class Solution(object):
                 count = 0
         
         return maxVal
+    
+    def basicForLoop(self, citations):
+        for n in citations:
+            print(n)
+        return 0
 
-
-        
 def main():
     sol = Solution()
     citations = [3,0,6,1,5]
