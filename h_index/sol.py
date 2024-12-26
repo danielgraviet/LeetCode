@@ -1,25 +1,20 @@
 class Solution(object):
     def hIndex(self, citations):
-        """
-        :type citations: List[int]
-        :rtype: int
-        """
-        # sort the array, to start in the middle.
-        citations.sort()
+        # this is the online solution
+        n = len(citations)
+        paper_counts = [0] * (n+1)
 
-        # find the middle index to start
-        middleIndex = len(citations) // 2
-        targetVal = citations[middleIndex]
-
-        count = 0
         for c in citations:
-            if c >= targetVal:
-                count += 1
+            paper_counts[min(n , c)] += 1
         
-        if count >= targetVal:
-            print(f"{targetVal} is a valid h-index because it appeared {count} times.")
+        h = n
+        papers = paper_counts[n]
 
-        return citations
+        while papers < h:
+            h -= 1
+            papers += paper_counts[h]
+        
+        return h
     
     def solution2(self, citations):
         count = 0
