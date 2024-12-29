@@ -27,7 +27,7 @@ class Solution(object):
     
 def main():
     sol = Solution()
-    print(sol.isHappy(21))
+    print(sol.isHappy(0))
     print(sol.sumOfSquares(29))
     print(1//10)
     
