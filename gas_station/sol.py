@@ -27,14 +27,31 @@ class Solution(object):
                 return start_index
         return -1
 
+    def youtubeSolution(self, gas, cost):
+        if sum(gas) < sum(cost):
+            return -1
+
+        total, res = 0,0
+        for i in range(len(gas)):
+            total += (gas[i] - cost[i])
+
+            if total < 0:
+                total = 0
+                res = i + 1
         
+        return res
 
 def main():
     sol = Solution()
     gas = [1,2,3,4,5]
     cost = [3,4,5,1,2]
+    gasF = [2,3,4]
+    costF = [3,4,3]
 
     print(sol.canCompleteCircuit(gas, cost))
+    print(sol.youtubeSolution(gas, cost))
+    print(sol.youtubeSolution(gasF, costF))
+
 
     # array = [1,2,3,4,5]
     # pivot = 0
