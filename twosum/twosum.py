@@ -19,7 +19,7 @@ class Solution(object):
         
 def main():
     solution = Solution()
-    print(solution.twoSum([2,7,11,5], 9))
+    print(solution.twoSum([2,11,5,7], 9))
     
 if __name__ == "__main__":
     main()
