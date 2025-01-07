@@ -7,7 +7,7 @@ class Solution(object):
         """
         left, right = 0, len(nums) - 1
         while left <= right:
-            middle = (left + right)//2
+            middle = (left + right) // 2
             if nums[middle] == target:
                 return middle
             elif nums[middle] > target:
@@ -16,12 +16,9 @@ class Solution(object):
                 left = middle + 1
         return left
         
-        
-        
-
 def main():
     sol = Solution()
-    array = [1,3,5,6,7]
+    array = [1,2,4,5,7,8,40,90]
     target = 2
     print(sol.searchInsert(array, target))
     
