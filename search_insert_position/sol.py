@@ -1,0 +1,30 @@
+class Solution(object):
+    def searchInsert(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        left, right = 0, len(nums) - 1
+        while left <= right:
+            middle = (left + right)//2
+            if nums[middle] == target:
+                return middle
+            elif nums[middle] > target:
+                right = middle - 1
+            else:
+                left = middle + 1
+        return left
+        
+        
+        
+
+def main():
+    sol = Solution()
+    array = [1,3,5,6,7]
+    target = 2
+    print(sol.searchInsert(array, target))
+    
+
+if __name__ == "__main__":
+    main()
