@@ -1,25 +1,25 @@
 class Solution(object):
     def largestRectangleArea(self, heights):
-        """
-        :type heights: List[int]
-        :rtype: int
-        """
-        # start with numbers left to right
-        # put first number as maxArea
-        # if next number is greater than maxArea, take max of next number,
-        # or area created by the second rectangle. 
-        # 
-        maxHeight = []
-        for num in heights:
-            # if stack empty, add to it
-            if not maxHeight:
-                maxHeight.append(num)
-            else:
-                if maxHeight[-1] < num:
-                    maxHeight.pop()
-                    maxHeight.append(num)
-
-        return maxHeight
+        stack = []
+        n = len(heights)
+        max_area = 0
+        
+        for i in range(n):
+            # While the current bar is shorter than the bar at the stack's top, process     the stack
+            while stack and heights[stack[-1]] > heights[i]:
+                h = heights[stack.pop()]  # Height of the bar
+                width = i if not stack else i - stack[-1] - 1  # Width calculation
+                max_area = max(max_area, h * width)
+            stack.append(i)
+        
+        # Process remaining bars in the stack
+        while stack:
+            h = heights[stack.pop()]
+            width = n if not stack else n - stack[-1] - 1
+            max_area = max(max_area, h * width)
+        
+        return max_area
+        
 
         
 def main():
