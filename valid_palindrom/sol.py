@@ -27,11 +27,13 @@ class Solution(object):
         return True
     
     def pythonicSolution(self, s):
-        char_result = "".join()
+        char_result = "".join([s.lower() for s in s if s.isalnum()])
+        return char_result[::-1] == char_result
         
 def main():
     sol = Solution()
     print(sol.isPalindrome(""))
+    print(sol.pythonicSolution("Amannama"))
 
 if __name__ == "__main__":
     main()
