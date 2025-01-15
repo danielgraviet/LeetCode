@@ -1,3 +1,5 @@
+import math
+
 class Solution(object):
     def setintersect(self, set1, set2):
         return bool(set1 & set2)
@@ -8,13 +10,17 @@ class Solution(object):
     
 def main():
     solution = Solution()
-    set1 = set('dan')
-    set2 = set('graviet')
-    result = solution.setintersect(set1, set2)
-    print("Sets have common elements:", result)
+    numList = [1,2,3,4]
+    squaredList = [num ** 2 for num in numList]
+    print(squaredList)
+
+    prices = [3.99, 2.45, 4.75]
+    for i, price in enumerate(prices):
+        nearest_dollar = math.ceil(price)
+        difference = nearest_dollar - price
+        difference_cents = round(difference * 100)
+        print(f"Price = {price:.2f}, Difference = {difference_cents} cents")
     
-    list = ["daniel", "thi", "graviet"]
-    solution.joinlist(list)
     
 if __name__ == "__main__":
     main()

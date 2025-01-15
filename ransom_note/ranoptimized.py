@@ -15,6 +15,10 @@ def main():
     print(solution.canConstruct("abc", "def"))
     name = "daniel thi graviet"
     print(name.count("a"))
+
+    newSet = set("Daniel Thi Graviet")
+    print(len(newSet))
+        
     
 if __name__ == "__main__":
     main()
