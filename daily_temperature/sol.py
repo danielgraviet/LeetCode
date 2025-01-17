@@ -18,6 +18,22 @@ class Solution(object):
             count = 0 if j == n else count
             result.append(count)
         return result
+    def optimized(self, temperatures):
+        """
+        :type temperatures: List[int]
+        :rtype: List[int]
+        """
+        res = [0] * len(temperatures)
+        stack = []
+        
+        for i, t in enumerate(temperatures):
+            while stack and t > stack[-1][0]:
+                stackT, stackInd = stack.pop()
+                res[stackInd] = (i - stackInd)
+            stack.append([t, i])
+        return res
+                
+        
     
     def optimizedSol(self, temperatures):
         res = [0] * len(temperatures)
@@ -34,7 +50,6 @@ def main():
     solution = Solution()
 
     print(solution.dailyTemperatures([30,40,70,20]))
-    print(solution.optimizedSol([30,40,70,20]))
     
 
 if __name__ == "__main__":
