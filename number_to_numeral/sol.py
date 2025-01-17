@@ -38,11 +38,19 @@ class Solution(object):
             place *= 10
 
         return place_values[::-1]
+    
+    def extractionPractice(self, num):
+        # given number 1234
+        numList = []
+        while num > 0:
+            numList.append(num % 10)
+            num = num // 10
+        return numList[::-1]
 
         
 def main():
     sol = Solution()
-    print(sol.intToRoman(3749))
+    print(sol.extractionPractice(2346234))
 
 if __name__ == "__main__":
     main()
