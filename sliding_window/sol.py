@@ -16,6 +16,18 @@ class Solution(object):
 
         return longest
     
+    def max_sum_subarray(self, arr, k):
+        # Your code here
+        curSub = sum(arr[:k])
+        maxSub = curSub
+
+        for i in range(k, len(arr)):
+            curSub += arr[i]
+            curSub -= arr[i-k]
+
+            maxSub = max(maxSub, curSub)
+        return maxSub
+    
     def find_max_average(self, nums, k):
         n = len(nums)
         cur_sum = 0
@@ -33,12 +45,30 @@ class Solution(object):
             max_avg = max(max_avg, avg)
         
         return max_avg
-        
+    
+    def maxSum(self, nums, k):
+        # find starting window. 
+        startSum = sum(nums[:k])
+        maxSum = startSum
+
+        # slide the window over, until the last spot
+        for i in range(k, len(nums)):
+            startSum += nums[i]
+            startSum -= nums[i - k]
+
+            maxSum = max(maxSum, startSum)
+        # keep track of the max. 
+        return maxSum
 
 def main():
     sol = Solution()
-    print(sol.sliding_window("abcda"))
-    print(sol.find_max_average([1,12,-5,-6,50,3], 4))
+
+
+     # Test the function
+    arr = [1, 4, 2, 10, 23, 3, 1, 0, 20]
+    k = 4
+    result = sol.max_sum_subarray(arr, k)
+    print(f"Maximum sum of subarray of size {k}: {result}")
 
 if __name__ == "__main__":
     main()
