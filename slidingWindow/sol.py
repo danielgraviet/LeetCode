@@ -57,6 +57,19 @@ class Solution:
                 left += 1
                 
         return result
+    
+    def maxProfit(self, nums: List[int]) -> int:
+        left = 0
+        maxProf = 0
+        
+        for right in range(1, len(nums)):
+            profit = nums[right] - nums[left]
+            if profit > 0:
+                maxProf = max(maxProf, profit)
+            else: 
+                left = right
+        return maxProf
+        
         
         
     
@@ -66,6 +79,9 @@ def main():
     print(sol.maximumSubarraySum([1,2,2], 2))
     print(sol.findMaxAverage([1,12,-5,-6,50,3], 4))
     print(sol.slidingTemplate([2,1,5,1,3,2], 3))
+    
+    print(sol.maxProfit([7,1,2,4,0,6,5]))
+    # answer should be 5
     
     
 if __name__ == "__main__":
