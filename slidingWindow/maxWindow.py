@@ -17,25 +17,22 @@ class Solution:
     
     def optimizedMaxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         left = 0
-        resultList = []
+        result = []
+        maxSum = max(nums[:k])
+        result.append(maxSum)
         
-        # initialize the first window and max. 
-        maxNum = max(nums[:k])
-        resultList.append(maxNum)
         
         for right in range(k, len(nums)):
-            # Check if the element that slid out was the max
-            if nums[left] == maxNum:
-                # find new max
-                maxNum = max(nums[left + 1:right + 1])
+            if nums[left] == maxSum:
+                maxSum = max(nums[left + 1: right + 1])
             else:
-                # Update max if the new element is greater
-                maxNum = max(maxNum, nums[right])
-                
-            resultList.append(maxNum)
+                maxSum = max(maxSum, nums[right])
             left += 1
-        
-        return resultList
+            result.append(maxSum)
+            
+        return result
+            
+                
     
     
         
