@@ -1,19 +1,18 @@
 class Solution(object):
     def knapsack(self, values, weights, capacity):
-        # check for edge cases
+        # check for edge cases: 
         if len(values) != len(weights) or capacity < 0:
             raise ValueError
         
-        # init dp array and other variables
+        # initialize an array
         dp = [0] * (capacity + 1)
         n = len(weights)
         
-        # double for loop with i and w
+        # double for loop
         for i in range(n):
             for w in range(capacity, weights[i] - 1, -1):
                 dp[w] = max(dp[w], values[i] + dp[w - weights[i]])
-        
-        # return dp[capacity]
+                
         return dp[capacity]
     
 def main():
